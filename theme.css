@@ -1,34 +1,174 @@
-/* Fő háttérszín */
+@import url('https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap');
+
+/* ============================================================
+   TROPICALSTUDIO PTERODACTYL THEME
+   ============================================================ */
+
+/* Fő háttérszín és globális betűtípus */
 body, #app {
     background-color: hsl(60, 3%, 7%) !important;
-    font-family: 'Onest', sans-serif !important;
+    font-family: 'Onest', system-ui, -apple-system, sans-serif !important;
+    color: #e4e4e7 !important;
 }
 
+/* Kijelölési szín */
+::selection {
+    background-color: hsl(38, 92%, 50%) !important;
+    color: #000000 !important;
+}
+
+/* ------------------------------------------------------------
+   BEJELENTKEZŐ / AUTH OLDAL
+   ------------------------------------------------------------ */
+
 /* Bejelentkező kártya testreszabása */
-div[class*="LoginFormContainer"] {
+div[class*="LoginFormContainer"],
+div[class*="ResetPasswordContainer"],
+div[class*="ForgotPasswordContainer"] {
     background-color: hsl(60, 1%, 11%) !important;
     border: 1px solid hsl(60, 0%, 18%) !important;
-    border-radius: 8px !important;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 15px rgba(242, 160, 13, 0.05) !important;
+    padding: 32px !important;
+    transition: transform 0.2s ease, border-color 0.2s ease !important;
 }
 
 /* Saját Logó beszúrása a bejelentkező form fölé */
-div[class*="LoginFormContainer"]::before {
+div[class*="LoginFormContainer"]::before,
+div[class*="ResetPasswordContainer"]::before,
+div[class*="ForgotPasswordContainer"]::before {
     content: "";
     display: block;
-    width: 50px;
-    height: 50px;
-    margin: 0 auto 15px auto;
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 20px auto;
     background-image: url('https://www.tropicalstudio.hu/fotok/tropicallogo.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+    filter: drop-shadow(0 4px 10px rgba(242, 160, 13, 0.2));
 }
 
-/* Elsődleges gombok színe (Tropical narancs) */
-button[type="submit"] {
+/* ------------------------------------------------------------
+   BEVITELI MEZŐK (INPUTOK) & KERETEK
+   ------------------------------------------------------------ */
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea,
+select {
+    background-color: hsl(60, 3%, 7%) !important;
+    border: 1px solid hsl(60, 0%, 18%) !important;
+    border-radius: 8px !important;
+    color: #ffffff !important;
+    padding: 10px 14px !important;
+    transition: all 0.2s ease !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: hsl(38, 92%, 50%) !important;
+    box-shadow: 0 0 0 2px rgba(242, 160, 13, 0.25) !important;
+    outline: none !important;
+}
+
+/* ------------------------------------------------------------
+   GOMBOK (BUTTONS)
+   ------------------------------------------------------------ */
+
+/* Elsődleges gombok (Tropical narancs) */
+button[type="submit"],
+.button-primary,
+button[class*="Button__Primary"] {
     background-color: hsl(38, 92%, 50%) !important;
     color: #000000 !important;
     font-weight: 700 !important;
-    border-radius: 6px !important;
+    border-radius: 8px !important;
+    border: none !important;
+    padding: 10px 20px !important;
+    transition: all 0.2s ease !important;
+    box-shadow: 0 4px 12px rgba(242, 160, 13, 0.2) !important;
+    cursor: pointer !important;
+}
+
+button[type="submit"]:hover,
+.button-primary:hover,
+button[class*="Button__Primary"]:hover {
+    background-color: hsl(38, 92%, 55%) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 6px 16px rgba(242, 160, 13, 0.35) !important;
+}
+
+button[type="submit"]:active,
+.button-primary:active {
+    transform: translateY(0) !important;
+}
+
+/* Másodlagos gombok */
+button[class*="Button__Secondary"] {
+    background-color: hsl(60, 0%, 18%) !important;
+    color: #ffffff !important;
+    border-radius: 8px !important;
+    transition: background-color 0.2s ease !important;
+}
+
+button[class*="Button__Secondary"]:hover {
+    background-color: hsl(60, 0%, 25%) !important;
+}
+
+/* ------------------------------------------------------------
+   NAVIGÁCIÓS SÁV ÉS KÁRTYÁK A PANELEN INSIDE
+   ------------------------------------------------------------ */
+
+/* Felső Navbar */
+nav[class*="NavigationBar"] {
+    background-color: hsl(60, 1%, 11%) !important;
+    border-bottom: 1px solid hsl(60, 0%, 18%) !important;
+}
+
+/* Navigációs linkek kiemelése */
+nav[class*="NavigationBar"] a:hover,
+nav[class*="NavigationBar"] a.active {
+    color: hsl(38, 92%, 50%) !important;
+}
+
+/* Szerver Kártyák / Konténerek */
+div[class*="ServerRow"],
+div[class*="ContentBox"] {
+    background-color: hsl(60, 1%, 11%) !important;
+    border: 1px solid hsl(60, 0%, 18%) !important;
+    border-radius: 10px !important;
+    transition: border-color 0.2s ease, transform 0.2s ease !important;
+}
+
+div[class*="ServerRow"]:hover {
+    border-color: hsl(38, 92%, 50%) !important;
+}
+
+/* Konzol háttér */
+div[class*="Terminal"] {
+    background-color: #0d0d0d !important;
+    border-radius: 8px !important;
+    border: 1px solid hsl(60, 0%, 18%) !important;
+}
+
+/* Görgetősáv (Scrollbar) */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: hsl(60, 3%, 7%);
+}
+
+::-webkit-scrollbar-thumb {
+    background: hsl(60, 0%, 22%);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: hsl(38, 92%, 50%);
 }
