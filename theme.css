@@ -11,15 +11,16 @@
     --color-border: 60 0% 18%;
 }
 
-/* --- GLOBÁLIS ALAPOK --- */
-html, body, #app {
+/* --- GLOBÁLIS ALAPOK ÉS TELJES HÁTTÉR --- */
+html, body, #app, div[class*="App__"] {
     background-color: hsl(var(--color-background)) !important;
     font-family: var(--font-sans) !important;
-    color: #ffffff !important;
+    color: hsl(var(--color-base)) !important;
     -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
 }
 
-/* Kijelölés */
+/* Kijelölési szín */
 ::selection {
     background-color: hsl(var(--color-primary)) !important;
     color: #000000 !important;
@@ -33,7 +34,7 @@ header {
     border-bottom: 1px solid hsl(var(--color-border)) !important;
 }
 
-/* Navigációs linkek és ikonok */
+/* Navigációs linkek */
 nav a, 
 div[class*="NavigationBar"] a {
     color: hsl(var(--color-muted)) !important;
@@ -47,7 +48,14 @@ div[class*="NavigationBar"] a:hover {
     color: hsl(var(--color-primary)) !important;
 }
 
-/* --- SZERVER KÁRTYÁK ÉS KONTÉNER DOBOZOK --- */
+/* --- DASHBOARD ÉS FŐ TARTALOM KONTÉNEREK --- */
+div[class*="DashboardContainer"], 
+div[class*="SubNavigation"],
+main {
+    background-color: hsl(var(--color-background)) !important;
+}
+
+/* --- SZERVER KÁRTYÁK ÉS DOBOZOK --- */
 div[class*="ServerRow"],
 div[class*="ContentBox"],
 div[class*="StatBlock"],
@@ -59,7 +67,6 @@ div[class*="TitledGreyBox"] {
     transition: border-color 0.2s ease, transform 0.2s ease !important;
 }
 
-/* Szerver kártya hover effektus */
 div[class*="ServerRow"]:hover {
     border-color: hsl(var(--color-primary)) !important;
     transform: translateY(-2px);
@@ -75,7 +82,6 @@ div[class*="ConsoleContainer"] {
 }
 
 /* --- GOMBOK --- */
-/* Elsődleges gombok (Start, MENTÉS, Módosítás) */
 button[class*="Button__Primary"],
 button[type="submit"],
 .btn-primary {
@@ -86,6 +92,7 @@ button[type="submit"],
     border-radius: 6px !important;
     border: none !important;
     transition: opacity 0.2s ease !important;
+    cursor: pointer !important;
 }
 
 button[class*="Button__Primary"]:hover,
@@ -93,7 +100,6 @@ button[type="submit"]:hover {
     opacity: 0.9 !important;
 }
 
-/* Másodlagos gombok */
 button[class*="Button__Secondary"] {
     background-color: hsl(var(--color-background-secondary)) !important;
     border: 1px solid hsl(var(--color-border)) !important;
@@ -110,14 +116,16 @@ input, textarea, select {
     border: 1px solid hsl(var(--color-border)) !important;
     color: #ffffff !important;
     border-radius: 6px !important;
+    font-family: var(--font-sans) !important;
 }
 
 input:focus, textarea:focus, select:focus {
     border-color: hsl(var(--color-primary)) !important;
     outline: none !important;
+    box-shadow: 0 0 0 2px rgba(242, 160, 13, 0.2) !important;
 }
 
-/* --- PROGRESZSÁVOK ÉS ÁLLAPOTJELZŐK --- */
+/* --- PROGRESZSÁVOK --- */
 div[class*="ProgressBar"] > div {
     background-color: hsl(var(--color-primary)) !important;
 }
