@@ -1,62 +1,106 @@
 @import url('https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap');
 
-/* Fő háttérszín */
-body, #app {
-    background-color: hsl(60, 3%, 7%) !important;
-    font-family: 'Onest', sans-serif !important;
-    color: #ffffff !important;
+:root {
+    --font-sans: 'Onest', ui-sans-serif, system-ui, sans-serif;
+    --color-primary: 38 92% 50%;
+    --color-neutral: 60 0% 11%;
+    --color-base: 0 0% 100%;
+    --color-muted: 220 14% 60%;
+    --color-background: 60 3% 7%;
+    --color-background-secondary: 60 1% 11%;
+    --color-border: 60 0% 18%;
 }
 
-/* Bejelentkező kártya */
-div[class*="LoginFormContainer"] {
-    background-color: hsl(60, 1%, 11%) !important;
-    border: 1px solid hsl(60, 0%, 18%) !important;
+/* Globális háttér és betűtípus */
+html, body, #app {
+    background-color: hsl(var(--color-background)) !important;
+    font-family: var(--font-sans) !important;
+    color: hsl(var(--color-base)) !important;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Kijelölés */
+::selection {
+    background-color: hsl(var(--color-primary)) !important;
+    color: #000000 !important;
+}
+
+/* --- AUTH / LOGIN / REGISTRATION / RESET KÁRTYÁK --- */
+div[class*="LoginFormContainer"],
+div[class*="AuthContainer"],
+div[class*="ResetPasswordContainer"],
+div[class*="ForgotPasswordContainer"] {
+    background-color: hsl(var(--color-background-secondary)) !important;
+    border: 1px solid hsl(var(--color-border)) !important;
     border-radius: 12px !important;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6) !important;
 }
 
-/* --- A GYÁRI DINÓ / MADÁR TELJES ELREJTÉSE --- */
-div[class*="LoginFormContainer"] img,
+/* A gyári dinó / madár elrejtése */
+div[class*="LoginFormContainer"] img[src*="pterodactyl"],
 div[class*="LoginFormContainer"] svg,
-div[class*="AuthContainer"] img {
+div[class*="AuthContainer"] img[src*="pterodactyl"] {
     display: none !important;
 }
 
-/* --- SAJÁT LOGÓ BEILLESZTÉSE A MADÁR HELYÉRE --- */
-div[class*="LoginFormContainer"]::before {
-    content: "";
-    display: block;
-    width: 80px;
-    height: 80px;
-    margin: 0 auto 20px auto;
-    background-image: url('https://www.tropicalstudio.hu/fotok/tropicallogo.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
+/* --- INPUT MEZŐK --- */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea,
+select {
+    background-color: hsl(var(--color-background)) !important;
+    border: 1px solid hsl(var(--color-border)) !important;
+    border-radius: 6px !important;
+    color: #ffffff !important;
+    font-family: var(--font-sans) !important;
+    padding: 10px 14px !important;
+    transition: border-color 0.2s ease !important;
 }
 
-/* Bejelentkező gomb (Tropical narancs) */
-button[type="submit"] {
-    background-color: hsl(38, 92%, 50%) !important;
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: hsl(var(--color-primary)) !important;
+    outline: none !important;
+    box-shadow: 0 0 0 2px rgba(242, 160, 13, 0.2) !important;
+}
+
+/* --- GOMBOK --- */
+button[type="submit"],
+.btn-primary,
+button[class*="Button__Primary"] {
+    background-color: hsl(var(--color-primary)) !important;
     color: #000000 !important;
     font-weight: 700 !important;
+    font-family: var(--font-sans) !important;
     border-radius: 6px !important;
-    transition: opacity 0.2s ease !important;
+    border: none !important;
+    padding: 10px 20px !important;
+    transition: opacity 0.2s ease, transform 0.2s ease !important;
+    cursor: pointer !important;
 }
 
-button[type="submit"]:hover {
-    opacity: 0.9 !important;
+button[type="submit"]:hover,
+.btn-primary:hover {
+    opacity: 0.95 !important;
+    transform: translateY(-1px) !important;
 }
 
-/* Input mezők */
-input {
-    background-color: hsl(60, 3%, 7%) !important;
-    border: 1px solid hsl(60, 0%, 18%) !important;
-    color: #fff !important;
-    border-radius: 6px !important;
+/* --- PANEL BELSŐ ELEMEK --- */
+nav[class*="NavigationBar"] {
+    background-color: hsl(var(--color-background)) !important;
+    border-bottom: 1px solid hsl(var(--color-border)) !important;
 }
 
-input:focus {
-    border-color: hsl(38, 92%, 50%) !important;
-    outline: none !important;
+div[class*="ServerRow"],
+div[class*="ContentBox"] {
+    background-color: hsl(var(--color-background-secondary)) !important;
+    border: 1px solid hsl(var(--color-border)) !important;
+    border-radius: 8px !important;
+    transition: border-color 0.2s ease, transform 0.2s ease !important;
+}
+
+div[class*="ServerRow"]:hover {
+    border-color: hsl(var(--color-primary)) !important;
 }
